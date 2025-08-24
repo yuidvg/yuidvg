@@ -1,3 +1,10 @@
-theme: jekyll-theme-minimal
-title: 西村 惟
-description: Yui Nishimura
+theme: minima
+minima:
+  skin: dark
+  social:
+    - icon: github
+      url: https://github.com/yuidvg
+author:
+  name: Yui Nishimura
+  email: tremors_beau.9z [at] icloud.com
+  url: https://github.com/yuidvg
