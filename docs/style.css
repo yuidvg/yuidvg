@@ -1,0 +1,82 @@
+:root {
+    color-scheme: light;
+    --paper: #f6f5f1;
+    --ink: #252c2b;
+    --muted: #5d6864;
+    --line: #d4d9d2;
+    --accent: #28614d;
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    font-size: 16px;
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 2rem; }
+body { margin: 0; color: var(--ink); background: var(--paper); line-height: 1.9; overflow-wrap: anywhere; }
+a { color: var(--accent); text-underline-offset: .22em; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+.page { max-width: 1080px; padding: 0 48px; margin: auto; }
+.skip-link { position: absolute; top: -5rem; left: 1rem; background: white; padding: 10px 20px; z-index: 2; }
+.skip-link:focus { top: 1rem; }
+.intro { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 72px; padding: 80px 0 64px; align-items: center; }
+.eyebrow { color: var(--muted); font-size: .8rem; letter-spacing: .12em; margin: 0 0 16px; }
+h1 { font-size: clamp(2.6rem, 6vw, 3.8rem); letter-spacing: .12em; line-height: 1.3; font-weight: 600; margin: 0; }
+.role { margin: 16px 0 24px; font-size: 1rem; }
+.lead { max-width: 35em; margin: 0; }
+nav { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 28px; font-size: .9rem; }
+figure { margin: 0; }
+.portrait img { display: block; width: 100%; height: 300px; object-fit: cover; border-radius: 3px; }
+figcaption { color: var(--muted); font-size: .75rem; margin-top: 8px; }
+.section { border-top: 1px solid var(--line); display: grid; grid-template-columns: 172px minmax(0, 1fr); gap: 36px; padding: 44px 0 48px; }
+h2 { font-size: .95rem; line-height: 1.8; font-weight: 600; margin: 0; }
+h3 { font-size: 1.1rem; line-height: 1.6; font-weight: 600; margin: 0 0 14px; }
+p { margin: 0 0 16px; }
+.section-body > :last-child { margin-bottom: 0; }
+.skills, .timeline { margin: 0; }
+.skills > div + div { margin-top: 20px; }
+.skills dt { font-weight: 600; font-size: .88rem; margin-bottom: 3px; }
+dd { margin: 0; }
+.skills dd { font-size: .92rem; }
+.project + .project { margin-top: 36px; padding-top: 32px; border-top: 1px solid var(--line); }
+.period { color: var(--muted); font-size: .8rem; margin: 0 0 9px; }
+.period span { display: inline-block; margin-left: 10px; }
+.tech { color: var(--muted); font-size: .78rem; line-height: 1.8; margin: 18px 0 0; }
+.timeline > div { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 16px; padding: 9px 0; font-size: .9rem; }
+.timeline dt { color: var(--muted); font-variant-numeric: tabular-nums; }
+.timeline > div:first-child { padding-top: 0; }
+.subheading { margin-top: 32px; }
+.plain-list { padding-left: 1.2em; margin: 16px 0 0; }
+.plain-list li + li { margin-top: 5px; }
+.gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.gallery img { display: block; width: 100%; height: 180px; background: #0b0e0b; object-fit: contain; border-radius: 3px; }
+.contact-list { list-style: none; padding: 0; margin: 0; }
+.contact-list li + li { margin-top: 8px; }
+footer { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--muted); font-size: .75rem; }
+footer p { margin: 0; }
+@media (max-width: 740px) {
+    .page { padding: 0 24px; }
+    .intro { gap: 32px; grid-template-columns: minmax(0, 1fr) 160px; padding: 48px 0 40px; }
+    .portrait img { height: 220px; }
+    .section { grid-template-columns: 1fr; gap: 24px; padding: 32px 0; }
+    h2 { color: var(--accent); }
+}
+@media (max-width: 480px) {
+    .intro { grid-template-columns: 1fr; gap: 32px; }
+    .portrait { max-width: 210px; }
+    .portrait img { height: 240px; }
+    .gallery { grid-template-columns: 1fr; gap: 24px; }
+    .gallery img { height: auto; max-height: 340px; }
+    .timeline > div { grid-template-columns: 88px minmax(0, 1fr); gap: 12px; }
+    .period span { display: block; margin-left: 0; }
+}
+@media print {
+    body { background: white; color: black; font-size: 10pt; }
+    .page { max-width: none; padding: 0; }
+    .intro { padding: 0 0 24px; grid-template-columns: 1fr 120px; gap: 32px; }
+    .portrait img { height: 150px; }
+    nav, .skip-link { display: none; }
+    .section { padding: 20px 0; grid-template-columns: 120px minmax(0, 1fr); gap: 20px; }
+    h2, h3 { break-after: avoid; }
+    p, li { orphans: 3; widows: 3; }
+    .project, .timeline > div, figure { break-inside: avoid; }
+    a { color: black; }
+}
