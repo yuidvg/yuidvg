@@ -8,6 +8,9 @@ colors:
   wash: "#eee"
   blue: "#0171e3"
   blue-hover: "#0055b2"
+  control-text: "#535353"
+  control-border: "#b8b8b8"
+  scrollbar: "#aaa"
 typography:
   display:
     fontFamily: "YakuHanJP, 'Hiragino Sans', Meiryo, 'Helvetica Neue', Helvetica, Arial, sans-serif"
@@ -41,6 +44,59 @@ typography:
     fontSize: "24px"
     fontWeight: 400
     lineHeight: 1.5
+  filter-label:
+    fontSize: "13px"
+    fontWeight: 400
+    lineHeight: 1.85
+  tech-tag:
+    fontSize: "12px"
+    fontWeight: 400
+    lineHeight: 1.5
+  chronology-year:
+    fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif"
+    fontSize: "26px"
+    fontWeight: 500
+    lineHeight: 1.3
+  event-title:
+    fontSize: "18px"
+    fontWeight: 500
+    lineHeight: 1.6
+  event-title-compact:
+    fontSize: "17px"
+    fontWeight: 500
+    lineHeight: 1.6
+  event-body:
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: 1.8
+  preview-section:
+    fontSize: "17px"
+    fontWeight: 500
+    lineHeight: 1.7
+  article-summary:
+    fontSize: "15px"
+    fontWeight: 400
+    lineHeight: 1.85
+  article-caption:
+    fontSize: "11px"
+    fontWeight: 400
+    lineHeight: 1.8
+  article-caption-page:
+    fontSize: "12px"
+    fontWeight: 400
+    lineHeight: 1.8
+  article-display:
+    fontSize: "clamp(28px, 3.5vw, 42px)"
+    fontWeight: 600
+    lineHeight: 1.5
+  article-deck:
+    fontSize: "18px"
+    fontWeight: 400
+    lineHeight: 1.85
+  article-section-compact:
+    fontSize: "22px"
+    fontWeight: 600
+    lineHeight: 1.55
 rounded:
   image: "8px"
   card: "12px"
@@ -81,6 +137,40 @@ components:
     textColor: "{colors.ink}"
     rounded: "{rounded.card}"
     padding: "20px 24px"
+  view-switch:
+    backgroundColor: "{colors.wash}"
+    rounded: "{rounded.control}"
+    padding: "4px"
+  view-switch-active:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.paper}"
+    rounded: "{rounded.control}"
+    padding: "10px 22px"
+  native-select:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    typography: "{typography.filter-label}"
+    rounded: "{rounded.image}"
+    padding: "8px 28px 8px 12px"
+  tech-tag:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.control-text}"
+    typography: "{typography.tech-tag}"
+    rounded: "{rounded.control}"
+    padding: "6px 12px"
+  tech-tag-selected:
+    backgroundColor: "{colors.blue-hover}"
+    textColor: "{colors.paper}"
+  chronology-event:
+    backgroundColor: "{colors.wash}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.card}"
+    padding: "24px"
+  article-preview:
+    backgroundColor: "{colors.wash}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.card}"
+    padding: "24px 28px 36px"
 ---
 
 # Design System: Yui Nishimura Public Profile
@@ -93,7 +183,7 @@ components:
 
 日本語と欧文は既存のサンセリフスタックで揃える。写真と作品が視覚的な変化を担い、コンポーネントは平面的な角丸と控えめな状態変化で支える。
 
-実装の出典は `docs/style.css`。要素と状態は `docs/index.html` と `docs/site.js` に基づく。ページ固有の構成は `.impeccable/surfaces/profile.md` に置く。
+実装の出典は `docs/style.css`。要素と状態は `docs/index.html`、`docs/site.js`、`docs/experience.mjs`、記事と経歴の内容は `content/experience.json` に基づく。ページ固有の構成は `.impeccable/surfaces/profile.md` に置く。
 
 **Key Characteristics:**
 - 白・黒・薄いグレーを基調に、操作へ青を使う。
@@ -116,6 +206,8 @@ components:
 - **白 / paper:** ページとヘッダーの背景、暗い面の文字。
 - **補助のグレー / muted:** 期間、写真注記、技術一覧など。
 - **薄いグレー / wash:** 案件、技術、経歴、連絡先のパネル。
+- **操作文字 / control-text、操作枠 / control-border:** 未選択の技術タグの文字と枠、ネイティブセレクトの枠。
+- **スクロールバー / scrollbar:** 記事プレビューのスクロール位置。背景は `wash`。
 
 **The Action Blue Rule.** 青は主要な操作、再生リンク、フォーカスと選択状態に使う。本文の説明や見出しはニュートラル色で保つ。
 
@@ -132,6 +224,10 @@ components:
 
 見出しはバランス改行と詰め組み（`palt`）、段落は厳密な日本語改行を使う。期間は等幅数字。モバイルの本文・セクション見出し・案件見出しはそれぞれ（15px / 26px / 22px）。
 
+仕事・時系列の追加書式は上記の用途別トークンを使う。年は欧文（26px / 500）、項目見出しは（18px / 500、700px以下は17px）、要約は（14px / 1.8）。切り替えは（14px / 400）、セレクト・補足・件数は（13px）、タグ・日付は（12px）。
+
+プレビューは見出し（24px）、導入（15px）、節見出し（17px / 500 / 1.7）、本文（14px）、出典（13px）、画像注記（11px / 1.8）。個別記事は見出し（28–42px）、導入（18px、700px以下は16px）、節見出し（24px、700px以下は22px）、画像注記（12px / 1.8）。本文は既存の `body` を引き継ぐ。
+
 ## Layout
 
 中央コンテナは最大（1120px）、左右余白は `gutter`、主要領域の上下余白は `section`。パネル内は `panel` を基本とする。ヘッダーは上端に固定追従し、高さ（62px）。アンカーのスクロール余白は（94px）。
@@ -141,6 +237,10 @@ components:
 - **900px以下:** 列間とナビゲーションの間隔を詰め、案件見出しを（22px）にする。
 - **700px以下:** ヒーロー、説明パネル、経歴、作品を1列にする。ヘッダーはワードマークと連絡先を残す。案件の内側余白は（28px 24px）。
 - **印刷:** A4、用紙余白（16mm）。装飾的なナビゲーションとフッターを隠し、実績詳細を開いて出力する。
+
+時系列は年ごとに（40px）、項目ごとに（12px）離す。ホバー可能な960px以上では、プレビュー表示中だけ一覧と記事を（.9fr / 1.1fr、間隔40px）で並べる。記事側は上端（86px）に追従し、最大高（100dvh − 110px）の内側をスクロールする。それ以外は1列と個別記事へのリンクを使う。
+
+個別記事は最大幅（760px）、本文は最大（45em）。節間（48px）、画像の上下（32px）、関連記事の手前（64px）を確保する。700px以下ではセレクトを折り返し、タグの操作高さを（44px）へ広げる。印刷では絞り込み、プレビュー、戻る操作、関連記事を隠す。
 
 ## Elevation & Depth
 
@@ -176,6 +276,22 @@ components:
 
 白い追従ヘッダーに、欧文ワードマーク、本文リンク、連絡先を並べる。通常リンクは下線、連絡先は背景色でホバーを示す。小さい画面では中間の本文リンクを隠す。キーボード用の本文スキップリンクはフォーカス時に表示する。
 
+### Explorer controls
+
+仕事一覧／時系列はグレーのピル内に並ぶボタン。選択中だけ黒地・白文字とし、`aria-pressed` で状態を伝える。各ボタンの高さは最低（44px）。分類・年・並び順はラベル付きのネイティブ `select` とし、白地、1pxの `control-border`、`image` の角丸を使う。分類と並び順は時系列で表示する。
+
+技術タグは白地、`control-text` の文字、1pxの `control-border`、`control` の角丸。内側余白（6px 12px）、高さは最低（36px）。ホバーは文字と枠を `ink`、選択中は背景と枠を `blue-hover`、文字を `paper` にする。複数選択はOR条件で、選択済みタグを再操作して解除できる。件数とリセットを併記し、絞り込みはURLと戻る・進むに同期する。フォーカス輪郭は既存の共通ルールを使う。
+
+### Chronology and article preview
+
+項目は `wash`、`card` の角丸、内側余白（24px）。日付・分類、見出し、要約、技術タグの順に並べる。記事リンクのホバーでは見出しに下線、プレビュー中の項目には `blue-hover` の輪郭（2px、オフセット2px）を付ける。
+
+プレビューは同じ平面に（24px 28px 36px）の内側余白を取る。デスクトップでは最初の項目を表示し、ホバー（130ms）またはフォーカスで記事を切り替える。ポインターが離れても記事を保持し、閉じる操作とEscapeで閉じられる。画像、注記、出典は本文内に置く。通常のクリック・タップは固有URLの静的記事へ進み、JavaScriptなしでも記事を読める。
+
+### Individual articles
+
+白い読み物の面に、戻るリンク、見出し、期間、導入、本文を縦に並べる。写真は幅いっぱい・高さ自動で `image` の角丸、ロゴは余白（28px）を取って `contain` で収める。出典と画像クレジットは下線付きリンク。関連記事は `wash` と `card` の角丸、内側余白（20px 24px）、最低高（64px）の行にする。
+
 ### Artwork and footer
 
 作品は静止画を最初に表示し、操作時だけ動画画像を読み込む。読み込み・停止・再試行は既存の文字ラベルで伝える。フッターは黒い角丸の面とし、ページ外周から（16px）離す。
@@ -187,6 +303,7 @@ components:
 - Do 写真・作品・パネル・操作で、対応する角丸トークンを使い分ける。
 - Do 操作にはキーボードフォーカスを表示し、動きの軽減設定を尊重する。
 - Do モバイルでは説明の列を縦に並べ、実績の詳細をネイティブの開閉操作で読めるようにする。
+- Do 時系列のプレビューと個別記事で同じ本文・画像注記・出典を提供し、ホバー以外の操作でも記事へ進めるようにする。
 
 ### Don't:
 - Don't 指定された白・黒・グレー・青の体系に、根拠のない装飾色や影を追加する。

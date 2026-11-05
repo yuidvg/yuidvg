@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-05T01:45:26.170014+00:00",
+  "generatedAt": "2026-11-05T02:46:54.084485+00:00",
   "title": "Design System: Yui Nishimura Public Profile",
   "extensions": {
     "colorMeta": {
@@ -27,6 +27,18 @@
       "blue-hover": {
         "role": "primary",
         "displayName": "濃い操作の青"
+      },
+      "control-text": {
+        "role": "neutral",
+        "displayName": "操作文字"
+      },
+      "control-border": {
+        "role": "neutral",
+        "displayName": "操作枠"
+      },
+      "scrollbar": {
+        "role": "neutral",
+        "displayName": "スクロールバー"
       }
     },
     "typographyMeta": {
@@ -53,6 +65,58 @@
       "latin": {
         "displayName": "Latin",
         "purpose": "ヒーローの欧文名。"
+      },
+      "filter-label": {
+        "displayName": "Filter label",
+        "purpose": "セレクト、補足、件数、記事の期間と出典。"
+      },
+      "tech-tag": {
+        "displayName": "Technology tag",
+        "purpose": "選択できる技術タグ。"
+      },
+      "chronology-year": {
+        "displayName": "Chronology year",
+        "purpose": "時系列の年見出し。"
+      },
+      "event-title": {
+        "displayName": "Event title",
+        "purpose": "時系列項目の見出し。"
+      },
+      "event-title-compact": {
+        "displayName": "Compact event title",
+        "purpose": "700px以下の時系列項目の見出し。"
+      },
+      "event-body": {
+        "displayName": "Event summary",
+        "purpose": "時系列項目の要約。"
+      },
+      "preview-section": {
+        "displayName": "Preview section",
+        "purpose": "記事プレビューの節見出し。"
+      },
+      "article-summary": {
+        "displayName": "Article summary",
+        "purpose": "記事プレビューの導入と関連記事の行。"
+      },
+      "article-caption": {
+        "displayName": "Preview image credit",
+        "purpose": "プレビューの画像注記。"
+      },
+      "article-caption-page": {
+        "displayName": "Article image credit",
+        "purpose": "個別記事の画像注記。"
+      },
+      "article-display": {
+        "displayName": "Article headline",
+        "purpose": "個別記事の見出し。"
+      },
+      "article-deck": {
+        "displayName": "Article deck",
+        "purpose": "個別記事の導入。700px以下では16px。"
+      },
+      "article-section-compact": {
+        "displayName": "Compact article section",
+        "purpose": "700px以下の個別記事の節見出し。"
       }
     },
     "shadows": [],
@@ -66,6 +130,11 @@
         "name": "anchor-scroll",
         "value": "smooth",
         "purpose": "ページ内リンクのスクロール。動きの軽減設定と印刷ではautoに切り替える。"
+      },
+      {
+        "name": "preview-hover-delay",
+        "value": "130ms",
+        "purpose": "ホバー可能な960px以上で記事を切り替えるまでの待ち時間。フォーカスは即時、ポインターが離れても表示済み記事を保持する。"
       }
     ],
     "breakpoints": [
@@ -76,6 +145,10 @@
       {
         "name": "stacked",
         "value": "700px"
+      },
+      {
+        "name": "hover-preview-min",
+        "value": "960px"
       }
     ]
   },
@@ -127,6 +200,38 @@
       "description": "日付と出来事を収める、平面的な角丸の経歴項目。",
       "html": "<dl class=\"ds-timeline\"><div><dt>2026年4月</dt><dd>42 Tokyo 卒業</dd></div></dl>",
       "css": ".ds-timeline{display:grid;gap:12px;margin:0;color:var(--ink, #0b0b0d);font:16px/1.85 var(--sans, YakuHanJP, 'Hiragino Sans', Meiryo, 'Helvetica Neue', Helvetica, Arial, sans-serif)}.ds-timeline>div{padding:20px 24px;background:var(--wash, #eee);border-radius:var(--radius-card, 12px)}.ds-timeline dt{color:var(--muted, #666);font-size:13px;font-variant-numeric:tabular-nums}.ds-timeline dd{margin:6px 0 0;font-size:15px}"
+    },
+    {
+      "name": "Project / timeline switch",
+      "kind": "button",
+      "refersTo": "view-switch",
+      "description": "仕事一覧と時系列を選ぶピル形のボタン群。選択状態は黒地とaria-pressedで示す。",
+      "html": "<div class=\"ds-view-switch\" role=\"group\" aria-label=\"表示形式\"><button type=\"button\" aria-pressed=\"false\">仕事一覧</button><button type=\"button\" aria-pressed=\"true\">時系列</button></div>",
+      "css": ".ds-view-switch{display:inline-flex;gap:4px;padding:4px;background:var(--wash, #eee);border-radius:var(--radius-control, 999px)}.ds-view-switch button{min-height:44px;padding:10px 22px;border:0;border-radius:var(--radius-control, 999px);background:transparent;color:var(--muted, #666);font:400 14px/1.85 var(--sans, YakuHanJP, 'Hiragino Sans', Meiryo, 'Helvetica Neue', Helvetica, Arial, sans-serif);cursor:pointer}.ds-view-switch button[aria-pressed=\"true\"]{background:var(--ink, #0b0b0d);color:var(--paper, #fff)}.ds-view-switch button:focus-visible{outline:2px solid var(--blue-hover, #0055b2);outline-offset:5px}"
+    },
+    {
+      "name": "Native select filter",
+      "kind": "input",
+      "refersTo": "native-select",
+      "description": "分類・年・並び順に用いるラベル付きネイティブセレクト。700px以下では折り返しに合わせて伸縮する。",
+      "html": "<div class=\"ds-select-filters\"><label>年<select aria-label=\"年\"><option>すべて</option><option>2026年</option><option>2025年</option></select></label></div>",
+      "css": ".ds-select-filters{display:flex;flex-wrap:wrap;gap:16px}.ds-select-filters label{display:flex;align-items:center;gap:8px;color:var(--muted, #666);font:400 13px/1.85 var(--sans, YakuHanJP, 'Hiragino Sans', Meiryo, 'Helvetica Neue', Helvetica, Arial, sans-serif)}.ds-select-filters select{font:inherit;min-height:44px;max-width:100%;padding:8px 28px 8px 12px;color:var(--ink, #0b0b0d);background:var(--paper, #fff);border:1px solid #b8b8b8;border-radius:var(--radius-image, 8px)}.ds-select-filters select:focus-visible{outline:2px solid var(--blue-hover, #0055b2);outline-offset:5px}@media(max-width:700px){.ds-select-filters{width:100%;gap:12px}.ds-select-filters label{flex:1 1 120px;justify-content:space-between}.ds-select-filters select{flex:1;min-width:0}}"
+    },
+    {
+      "name": "Selectable technology tag",
+      "kind": "chip",
+      "refersTo": "tech-tag",
+      "description": "未選択は白地とグレーの枠、選択中は濃い青。複数選択はOR条件で、再操作で解除する。",
+      "html": "<div class=\"ds-tech-tags\"><button class=\"ds-tech-tag\" type=\"button\" aria-pressed=\"true\">Google Apps Script</button><button class=\"ds-tech-tag\" type=\"button\" aria-pressed=\"false\">Haskell</button></div>",
+      "css": ".ds-tech-tags{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.ds-tech-tag{display:inline-flex;align-items:center;min-height:36px;max-width:100%;padding:6px 12px;font:400 12px/1.5 var(--sans, YakuHanJP, 'Hiragino Sans', Meiryo, 'Helvetica Neue', Helvetica, Arial, sans-serif);background:var(--paper, #fff);color:#535353;border:1px solid #b8b8b8;border-radius:var(--radius-control, 999px);text-align:left;cursor:pointer}.ds-tech-tag:hover{color:var(--ink, #0b0b0d);border-color:var(--ink, #0b0b0d);text-decoration:none}.ds-tech-tag[aria-pressed=\"true\"]{color:var(--paper, #fff);background:var(--blue-hover, #0055b2);border-color:var(--blue-hover, #0055b2)}.ds-tech-tag:focus-visible{outline:2px solid var(--blue-hover, #0055b2);outline-offset:5px}@media(max-width:700px){.ds-tech-tag{min-height:44px}}"
+    },
+    {
+      "name": "Chronology and article preview",
+      "kind": "custom",
+      "refersTo": "article-preview",
+      "description": "960px以上かつホバー可能な画面で、選択項目に隣接する持続型の記事プレビュー。焦点移動でも切り替え、閉じる操作とEscapeで閉じる。狭い画面・タッチ・JavaScript無効時は固有URLの記事を読む。",
+      "html": "<div class=\"ds-chronology-layout\"><article class=\"ds-chronology-event ds-is-previewed\"><a class=\"ds-event-link\" href=\"articles/furniture-system/\"><p class=\"ds-event-meta\">2026年8月</p><h4>中古家具販売事業者様の社内システム整備</h4><p class=\"ds-event-summary\">一点ごとに異なる中古家具を管理する業務に合わせ、GoogleスプレッドシートとGoogle Apps Scriptで業務システムを設計・実装。</p></a></article><aside class=\"ds-reading-preview\" tabindex=\"0\" aria-label=\"記事プレビュー\"><div class=\"ds-preview-toolbar\"><p>記事プレビュー</p><button type=\"button\">閉じる</button></div><article class=\"ds-reading-article\"><h3>中古家具販売事業者様の社内システム整備</h3><p class=\"ds-article-period\">2026年8月〜現在（2026年11月終了予定）</p><section><h4>一点ごとに異なる中古家具を管理する</h4><p>在庫情報を手作業でスプレッドシートに転記しており、入力ミスやデータの不整合が、会計・決算・税務対応や返品などの例外処理の負担になっていました。</p></section><a class=\"ds-article-link\" href=\"articles/furniture-system/\">記事を開く</a></article></aside></div>",
+      "css": ".ds-chronology-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:40px;align-items:start;color:var(--ink, #0b0b0d);font:400 16px/1.85 var(--sans, YakuHanJP, 'Hiragino Sans', Meiryo, 'Helvetica Neue', Helvetica, Arial, sans-serif)}.ds-chronology-event{background:var(--wash, #eee);border-radius:var(--radius-card, 12px);padding:24px}.ds-is-previewed{outline:2px solid var(--blue-hover, #0055b2);outline-offset:2px}.ds-event-link{display:block;color:inherit;text-decoration:none}.ds-event-link:hover h4{text-decoration:underline;text-underline-offset:.25em}.ds-event-meta{margin:0;color:var(--muted, #666);font-size:12px;font-variant-numeric:tabular-nums}.ds-event-link h4{margin:10px 0 0;font-size:18px;font-weight:500;line-height:1.6;text-wrap:balance}.ds-event-summary{margin:12px 0 0;font-size:14px;line-height:1.8;line-break:strict}.ds-reading-preview{position:sticky;top:86px;max-height:calc(100dvh - 110px);overflow-y:auto;overscroll-behavior:contain;scrollbar-color:#aaa var(--wash, #eee);scrollbar-width:thin;border-radius:var(--radius-card, 12px);background:var(--wash, #eee);padding:24px 28px 36px}.ds-preview-toolbar{display:flex;align-items:start;justify-content:space-between;gap:12px;margin-bottom:24px;color:var(--muted, #666);font-size:12px}.ds-preview-toolbar p{margin:0;padding-top:9px}.ds-preview-toolbar button{font:inherit;flex:none;border:0;background:transparent;padding:8px 4px;min-height:36px;color:var(--blue-hover, #0055b2);cursor:pointer}.ds-reading-article h3{margin:0;font-size:24px;font-weight:600;line-height:1.55;font-feature-settings:\"palt\";text-wrap:balance}.ds-article-period{margin:14px 0 0;font-size:13px;color:var(--muted, #666)}.ds-reading-article section{margin-top:32px}.ds-reading-article section h4{margin:0 0 14px;font-size:17px;font-weight:500;line-height:1.7}.ds-reading-article section p{margin:0;font-size:14px;line-break:strict}.ds-article-link{display:inline-flex;align-items:center;min-height:44px;margin-top:12px;color:var(--blue-hover, #0055b2);font-size:14px;font-weight:500;text-decoration:none}.ds-article-link:hover{text-decoration:underline;text-underline-offset:.25em}.ds-event-link:focus-visible,.ds-reading-preview:focus-visible,.ds-preview-toolbar button:focus-visible,.ds-article-link:focus-visible{outline:2px solid var(--blue-hover, #0055b2);outline-offset:5px}@media(min-width:960px) and (hover:hover){.ds-chronology-layout{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}}@media(max-width:959px),(hover:none){.ds-reading-preview{display:none}.ds-is-previewed{outline:none}}@media(max-width:700px){.ds-event-link h4{font-size:17px}}"
     }
   ],
   "narrative": {
@@ -154,7 +259,8 @@
       "Do 既存の日本語・欧文フォントスタックと、本文のゆとりある行間を引き継ぐ。",
       "Do 写真・作品・パネル・操作で、対応する角丸トークンを使い分ける。",
       "Do 操作にはキーボードフォーカスを表示し、動きの軽減設定を尊重する。",
-      "Do モバイルでは説明の列を縦に並べ、実績の詳細をネイティブの開閉操作で読めるようにする。"
+      "Do モバイルでは説明の列を縦に並べ、実績の詳細をネイティブの開閉操作で読めるようにする。",
+      "Do 時系列のプレビューと個別記事で同じ本文・画像注記・出典を提供し、ホバー以外の操作でも記事へ進めるようにする。"
     ],
     "donts": [
       "Don't 指定された白・黒・グレー・青の体系に、根拠のない装飾色や影を追加する。",
