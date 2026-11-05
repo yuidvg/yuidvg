@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-05T01:45:26.170014+00:00",
+  "title": "Design System: Yui Nishimura Public Profile",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "neutral",
+        "displayName": "墨"
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "白"
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "補助のグレー"
+      },
+      "wash": {
+        "role": "neutral",
+        "displayName": "薄いグレー"
+      },
+      "blue": {
+        "role": "primary",
+        "displayName": "操作の青"
+      },
+      "blue-hover": {
+        "role": "primary",
+        "displayName": "濃い操作の青"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "ヒーローの日本語名。"
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "セクション見出し。"
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "案件と技術紹介の見出し。"
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "通常の日本語本文。"
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "本文リンクと開閉操作。"
+      },
+      "latin": {
+        "displayName": "Latin",
+        "purpose": "ヒーローの欧文名。"
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "disclosure-rotation",
+        "value": "transform .2s ease",
+        "purpose": "開閉記号を45deg回転。prefers-reduced-motion: reduceでは遷移を無効にする。"
+      },
+      {
+        "name": "anchor-scroll",
+        "value": "smooth",
+        "purpose": "ページ内リンクのスクロール。動きの軽減設定と印刷ではautoに切り替える。"
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact",
+        "value": "900px"
+      },
+      {
+        "name": "stacked",
+        "value": "700px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary contact link",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "ヘッダーの主要操作。青いピル形のリンク。",
+      "html": "<a class=\"ds-primary\" href=\"#contact\">連絡先 <svg class=\"ds-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"></path></svg></a>",
+      "css": ".ds-primary{display:inline-flex;align-items:center;min-height:44px;padding:10px 18px;gap:12px;border-radius:var(--radius-control, 999px);color:var(--paper, #fff);background:var(--blue, #0171e3);font:13px/1.85 var(--sans, YakuHanJP, 'Hiragino Sans', Meiryo, 'Helvetica Neue', Helvetica, Arial, sans-serif);text-decoration:none;white-space:nowrap}.ds-primary:hover{background:var(--blue-hover, #0055b2);text-decoration:none}.ds-primary:focus-visible{outline:2px solid var(--blue-hover, #0055b2);outline-offset:5px;}.ds-icon{width:20px;height:20px;flex:none}@media(max-width:700px){.ds-primary{font-size:12px;padding:10px 16px}}"
+    },
+    {
+      "name": "Text link",
+      "kind": "button",
+      "refersTo": "text-link",
+      "description": "説明から次の領域へ進む、矢印付きの本文リンク。",
+      "html": "<a class=\"ds-text-link\" href=\"#work\">主な仕事を見る <svg class=\"ds-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"></path></svg></a>",
+      "css": ".ds-text-link{display:inline-flex;gap:14px;align-items:center;min-height:44px;font:500 14px/1.85 var(--sans, YakuHanJP, 'Hiragino Sans', Meiryo, 'Helvetica Neue', Helvetica, Arial, sans-serif);color:var(--ink, #0b0b0d);text-decoration:none}.ds-text-link:hover{text-decoration:underline;text-underline-offset:.25em}.ds-text-link:focus-visible{outline:2px solid var(--blue-hover, #0055b2);outline-offset:5px;}.ds-icon{width:20px;height:20px;flex:none}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "白い追従ヘッダー。モバイルでは主要操作を残す。",
+      "html": "<header class=\"ds-masthead\"><a class=\"ds-wordmark\" href=\"#top\">YUI NISHIMURA</a><nav class=\"ds-nav\" aria-label=\"ページ内の案内\"><a class=\"ds-nav-link\" href=\"#work\">主な仕事</a><a class=\"ds-nav-link\" href=\"#about\">プロフィール</a><a class=\"ds-nav-link\" href=\"#studies\">制作</a><a class=\"ds-primary\" href=\"#contact\">連絡先 <svg class=\"ds-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"></path></svg></a></nav></header>",
+      "css": ".ds-masthead{height:62px;padding-inline:max(var(--gutter, clamp(24px, 3.75vw, 48px)), calc((100% - 1120px) / 2));display:flex;align-items:center;justify-content:space-between;gap:24px;position:sticky;top:0;z-index:20;background:var(--paper, #fff);color:var(--ink, #0b0b0d);font:16px/1.85 var(--sans, YakuHanJP, 'Hiragino Sans', Meiryo, 'Helvetica Neue', Helvetica, Arial, sans-serif)}.ds-wordmark{font:600 14px/1 var(--latin, 'Helvetica Neue', Helvetica, Arial, sans-serif);white-space:nowrap;color:inherit;text-decoration:none}.ds-nav{display:flex;align-items:center;gap:28px}.ds-nav-link{display:inline-flex;align-items:center;min-height:44px;font-size:13px;white-space:nowrap;color:inherit;text-decoration:none}.ds-nav-link:hover,.ds-wordmark:hover{text-decoration:underline;text-underline-offset:.25em}.ds-nav-link:focus-visible,.ds-wordmark:focus-visible{outline:2px solid var(--blue-hover, #0055b2);outline-offset:5px;}.ds-primary{display:inline-flex;align-items:center;min-height:44px;padding:10px 18px;gap:12px;border-radius:var(--radius-control, 999px);color:var(--paper, #fff);background:var(--blue, #0171e3);font:13px/1.85 var(--sans, YakuHanJP, 'Hiragino Sans', Meiryo, 'Helvetica Neue', Helvetica, Arial, sans-serif);text-decoration:none;white-space:nowrap}.ds-primary:hover{background:var(--blue-hover, #0055b2);text-decoration:none}.ds-primary:focus-visible{outline:2px solid var(--blue-hover, #0055b2);outline-offset:5px;}.ds-icon{width:20px;height:20px;flex:none}@media(max-width:700px){.ds-primary{font-size:12px;padding:10px 16px}}@media(max-width:900px){.ds-nav{gap:20px}}@media(max-width:700px){.ds-nav-link{display:none}}"
+    },
+    {
+      "name": "Project panel",
+      "kind": "card",
+      "refersTo": "project-panel",
+      "description": "薄いグレーの面で見出しと説明をまとめる。",
+      "html": "<article class=\"ds-project\"><div><p class=\"ds-period\">2025年9月〜2026年5月</p><h3>AIを活用した合意形成システム</h3></div><div class=\"ds-project-content\"><p>チーム開発をリードし、仕様整理、コードレビュー、タスク分担、追加機能開発、リデザインを担当しました。</p></div></article>",
+      "css": ".ds-project{display:grid;grid-template-columns:.85fr 1.15fr;align-items:start;gap:8%;padding:clamp(24px, 3.5vw, 48px);background:var(--wash, #eee);border-radius:var(--radius-card, 12px);color:var(--ink, #0b0b0d);font:16px/1.85 var(--sans, YakuHanJP, 'Hiragino Sans', Meiryo, 'Helvetica Neue', Helvetica, Arial, sans-serif)}.ds-project p{margin:0;line-break:strict}.ds-period{color:var(--muted, #666);font-size:13px;font-variant-numeric:tabular-nums}.ds-project h3{max-width:14em;margin:14px 0 0;font-size:24px;font-weight:600;line-height:1.55;font-feature-settings:\"palt\";text-wrap:balance}.ds-project-content{font-size:15px}@media(max-width:900px){.ds-project{gap:6%}.ds-project h3{font-size:22px}}@media(max-width:700px){.ds-project{grid-template-columns:1fr;gap:24px;padding:28px 24px}.ds-project h3{max-width:20em;margin-top:12px}}"
+    },
+    {
+      "name": "Project disclosure",
+      "kind": "custom",
+      "refersTo": "disclosure",
+      "description": "ネイティブの開閉操作。線画のプラスが回転する。",
+      "html": "<details class=\"ds-details\"><summary><span>取り組み・実績</span><svg class=\"ds-expand-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M5 12h14M12 5v14\"></path></svg></summary><div class=\"ds-detail-body\"><p>CI/CD、ステージング環境、Sentryによる運用監視を導入。</p></div></details>",
+      "css": ".ds-details{margin-top:20px;color:var(--ink, #0b0b0d);font:15px/1.85 var(--sans, YakuHanJP, 'Hiragino Sans', Meiryo, 'Helvetica Neue', Helvetica, Arial, sans-serif)}.ds-details summary{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:44px;padding:8px 0;font-size:14px;font-weight:500;cursor:pointer;list-style:none}.ds-details summary::-webkit-details-marker{display:none}.ds-details summary:hover span{text-decoration:underline;text-underline-offset:.3em}.ds-details summary:focus-visible{outline:2px solid var(--blue-hover, #0055b2);outline-offset:5px;}.ds-expand-icon{width:20px;height:20px;flex:none;transition:transform .2s ease}.ds-details[open] .ds-expand-icon{transform:rotate(45deg)}.ds-detail-body{padding-top:12px}.ds-detail-body p{margin:0;line-break:strict}@media(prefers-reduced-motion:reduce){.ds-expand-icon{transition:none}}"
+    },
+    {
+      "name": "Timeline item",
+      "kind": "card",
+      "refersTo": "timeline-item",
+      "description": "日付と出来事を収める、平面的な角丸の経歴項目。",
+      "html": "<dl class=\"ds-timeline\"><div><dt>2026年4月</dt><dd>42 Tokyo 卒業</dd></div></dl>",
+      "css": ".ds-timeline{display:grid;gap:12px;margin:0;color:var(--ink, #0b0b0d);font:16px/1.85 var(--sans, YakuHanJP, 'Hiragino Sans', Meiryo, 'Helvetica Neue', Helvetica, Arial, sans-serif)}.ds-timeline>div{padding:20px 24px;background:var(--wash, #eee);border-radius:var(--radius-card, 12px)}.ds-timeline dt{color:var(--muted, #666);font-size:13px;font-variant-numeric:tabular-nums}.ds-timeline dd{margin:6px 0 0;font-size:15px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "写真と余白のプロフィール",
+    "overview": "指定された既存サイトの、白地・黒い文字・薄いグレーの面・青い操作リンクを継承する。写真と余白を使い、仕事の説明を落ち着いて読める密度に整える。\n\n日本語と欧文は既存のサンセリフスタックで揃える。写真と作品が視覚的な変化を担い、コンポーネントは平面的な角丸と控えめな状態変化で支える。",
+    "keyCharacteristics": [
+      "白・黒・薄いグレーを基調に、操作へ青を使う。",
+      "写真と作品には既存の本人の素材を使う。",
+      "余白、文字の大きさ、面の明暗で階層を作る。",
+      "角丸のパネルとピル形の主要リンクを使う。"
+    ],
+    "rules": [
+      {
+        "name": "Action Blue",
+        "body": "青は主要な操作、再生リンク、フォーカスと選択状態に使う。本文の説明や見出しはニュートラル色で保つ。",
+        "section": "colors"
+      },
+      {
+        "name": "Flat Surface",
+        "body": "通常の面とホバー状態に影を足さず、白・薄いグレー・黒の切り替えで領域を示す。",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do 既存の日本語・欧文フォントスタックと、本文のゆとりある行間を引き継ぐ。",
+      "Do 写真・作品・パネル・操作で、対応する角丸トークンを使い分ける。",
+      "Do 操作にはキーボードフォーカスを表示し、動きの軽減設定を尊重する。",
+      "Do モバイルでは説明の列を縦に並べ、実績の詳細をネイティブの開閉操作で読めるようにする。"
+    ],
+    "donts": [
+      "Don't 指定された白・黒・グレー・青の体系に、根拠のない装飾色や影を追加する。",
+      "Don't 写真を生成画像へ置き換えたり、作品の自動再生を追加したりする。",
+      "Don't JavaScriptの有無で本文や実績の詳細を読めなくする。"
+    ]
+  }
+}

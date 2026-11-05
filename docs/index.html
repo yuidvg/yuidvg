@@ -4,97 +4,70 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="西村 惟（Yui Nishimura）。ソフトウェアエンジニア。業務アプリの企画・設計、開発チームの運営、AIを用いた機能開発、導入・運用の経験を紹介します。">
-<meta name="theme-color" content="#f6f5f1">
+<meta name="theme-color" content="#ffffff">
 <title>西村 惟 (Yui Nishimura)</title>
 <link rel="stylesheet" href="style.css">
+<script src="site.js" defer></script>
 </head>
-<body>
+<body id="top">
 <a class="skip-link" href="#main">本文へ移動</a>
-<div class="page">
-<header class="intro">
-<div>
-<p class="eyebrow">Yui Nishimura</p>
-<h1>西村 惟</h1>
-<p class="role">ソフトウェアエンジニア</p>
-<p class="lead">業務アプリの企画・設計から、開発チームの運営、現場への導入、本番環境の整備まで携わってきました。</p>
-<nav aria-label="ページ内の案内"><a href="#work">主な仕事</a><a href="#background">経歴</a><a href="#contact">連絡先</a></nav>
-</div>
-<figure class="portrait"><img fetchpriority="high" src="portrait-cph.avif" alt="CopenHillで撮影した西村惟の写真"><figcaption>CopenHill</figcaption></figure>
-</header>
-<main id="main">
-<section class="section" aria-labelledby="profile-title">
-<h2 id="profile-title">プロフィール</h2>
-<div class="section-body">
-<p>2001年生まれ。大阪府出身。2019年から個人事業主として、Webサイト制作、資料翻訳、プログラミング教育、アプリ開発に取り組んでいます。2025年9月から合同会社多元現実で活動し、2026年1月に社員に就任しました。</p>
+<header class="masthead"><a class="wordmark" href="#top">YUI NISHIMURA</a><nav aria-label="ページ内の案内"><a href="#work">主な仕事</a><a href="#about">プロフィール</a><a href="#studies">制作</a><a class="header-contact" href="#contact">連絡先 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></nav></header><main id="main">
+<section class="hero wrap" aria-labelledby="hero-title"><div class="hero-copy"><h1 id="hero-title">西村 惟</h1><p class="hero-english">Yui Nishimura</p><p class="role">ソフトウェアエンジニア</p><p class="lead">業務アプリの企画・設計から、開発チームの運営、現場への導入、本番環境の整備まで携わってきました。</p><a class="text-link" href="#work">主な仕事を見る <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div><figure class="portrait"><img src="images/portrait-cph.webp" width="960" height="1280" alt="CopenHillで撮影した西村惟の写真" fetchpriority="high"><figcaption>CopenHill</figcaption></figure></section><section class="work-section wrap" id="work" aria-labelledby="work-title">
+<div class="section-heading"><div><h2 id="work-title">主な仕事</h2></div><p class="section-caption">企画・設計から開発・導入・運用まで</p></div>
+<div class="projects"><article class="project">
+<div class="project-heading"><p class="period">2026年8月〜現在 <span>2026年11月終了予定</span></p><h3>中古家具販売事業者様の社内システム整備</h3></div>
+<div class="project-content"><p>一点ごとに異なる中古家具を管理する業務に合わせ、GoogleスプレッドシートとGoogle Apps Scriptで業務システムを設計・実装。営業・顧客対応からデータ整理、導入、フィードバックを受けた改善まで一貫して担当しています。</p>
+<details class="project-details"><summary><span>取り組み・実績</span><svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5v14"></path></svg></summary>
+<div class="detail-body"><p>貼り付けた情報から項目を自動入力し、データの矛盾を警告する機能を実装しました。Claude・GPTによる在庫回転の傾向分析や、TabFMによる販売価格・売上の予測処理も導入しています。</p><p>入力ご担当者様から入力の負担が減ったとの評価を得ました。予測結果は仕入れご担当者様が最終確認する判断材料とし、実際の仕入れ判断での利用はこれからの段階です。</p></div></details>
+<p class="tech">Google Apps Script / Googleスプレッドシート / Claude / GPT / TabFM</p></div></article><article class="project">
+<div class="project-heading"><p class="period">2025年9月〜2026年5月</p><h3>AIを活用した合意形成システム</h3></div>
+<div class="project-content"><p>AIが生成するYes／No形式の質問を通じて、会議参加者の意見の相違や対立点、関心が向けられていない論点を抽出するシステムを3名で共同開発しました。チーム開発をリードし、仕様整理、コードレビュー、タスク分担、追加機能開発、リデザインを担当しました。</p>
+<details class="project-details"><summary><span>取り組み・実績</span><svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5v14"></path></svg></summary>
+<div class="detail-body"><p>CI/CD、ステージング環境、Sentryによる運用監視を導入。Nix・Colmenaによる環境構築・デプロイの整備や、自動テストと型安全性を用いた重要な処理の安定化にも取り組みました。</p><p>1,000人以上が利用し、大企業様での導入1件、4自治体様での利用実績があります。</p></div></details>
+<p class="tech">Next.js / Supabase / Gemini / Vercel / Nix / Colmena / Sentry / Haskell</p></div></article><article class="project">
+<div class="project-heading"><p class="period">2020年10月〜2024年7月</p><h3>学習塾様向け学習支援アプリ</h3></div>
+<div class="project-content"><p>生徒自身が目標設定や学習計画づくりに参加できるアプリを開発。営業・企画、採用、顧客対応、技術選定、要件整理、画面設計、デザイン、導入を担当し、実装・テストは採用したエンジニアが担当しました。</p>
+<details class="project-details"><summary><span>取り組み・実績</span><svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5v14"></path></svg></summary>
+<div class="detail-body"><p>学習予定のカレンダーへの自動配分、実施記録、ゲーミフィケーション、学習時間のダッシュボードを設計。200名以上の生徒が利用しました。</p></div></details>
+<p class="tech">Flutter / Firebase / Figma</p></div></article><article class="project">
+<div class="project-heading"><p class="period">2020年7月〜2020年11月</p><h3>大手人材派遣会社様向け研修動画システム</h3></div>
+<div class="project-content"><p>研修動画を集約し、検索、視聴履歴、お気に入り、社員ごとの研修進捗の確認ができるシステムを開発。チームの採用、技術選定、要件整理、ワイヤフレーム設計、プロジェクト管理を担当しました。</p>
+<details class="project-details"><summary><span>取り組み・実績</span><svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5v14"></path></svg></summary>
+<div class="detail-body"><p>管理者・評価者・受講者の3種類の役割を設け、動画・機能ごとのアクセス制御の設計に携わりました。従業員約7万人の企業様向けに開発し、導入後に使いやすいとの評価を得ました。</p></div></details>
+<p class="tech">Vue.js / Firebase / AWS / Figma</p></div></article><article class="project">
+<div class="project-heading"><p class="period">2020年6月〜2020年10月</p><h3>整骨院様向け予実管理アプリ</h3></div>
+<div class="project-content"><p>店舗ごとに異なっていた数値の報告方法を整理し、売上・回数券販売・施術件数などのKPI達成状況を入力・確認できるアプリを開発。営業、採用、顧客対応、技術選定、要件整理、画面設計、現場への導入を担当しました。</p>
+<details class="project-details"><summary><span>取り組み・実績</span><svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5v14"></path></svg></summary>
+<div class="detail-body"><p>実装・テストは採用したエンジニア、画面のトーン＆マナーは採用したデザイナーが担当。10店舗以上を展開する事業者様に導入し、少なくとも30名が利用しました。</p></div></details>
+<p class="tech">Flutter / Firebase / Figma</p></div></article></div>
+</section>
+<section class="about-section wrap" id="about" aria-labelledby="about-title">
+<div class="section-heading"><div><h2 id="about-title">プロフィール</h2></div></div>
+<div class="about-grid"><div class="about-copy"><p>2001年生まれ。大阪府出身。2019年から個人事業主として、Webサイト制作、資料翻訳、プログラミング教育、アプリ開発に取り組んでいます。2025年9月から合同会社多元現実で活動し、2026年1月に社員に就任しました。</p>
 <p>業務アプリでは、お客様と要件を整理し、画面設計、技術選定、開発チームの採用、プロジェクト管理、導入支援を担当してきました。AI合意形成システムの機能開発と本番運用基盤の整備も経験しました。現在は中古家具販売事業者様の業務システムを設計・実装し、導入と改善を進めています。</p>
-<p>幼少期から科学、写真、絵画に親しんできました。登山と歴史にも関心があります。クライミングやギターも楽しんでいます。</p>
-</div></section>
-<section class="section" aria-labelledby="skills-title">
-<h2 id="skills-title">経験・技術</h2>
-<div class="section-body"><dl class="skills">
+<p>幼少期から科学、写真、絵画に親しんできました。登山と歴史にも関心があります。クライミングやギターも楽しんでいます。</p></div><div class="skill-column"><h3>経験・技術</h3><dl class="skills">
 <div><dt>企画・開発管理</dt><dd>顧客対応、要件整理、画面設計、技術選定、エンジニア・デザイナーの採用、プロジェクト管理、現場導入</dd></div>
 <div><dt>開発・運用</dt><dd>機能開発、コードレビュー、自動テスト、CI/CD、ステージング環境、運用監視、環境構築・デプロイの整備</dd></div>
 <div><dt>専門分野</dt><dd>関数型プログラミング、DevOps、ネットワーク、セキュリティ</dd></div>
 <div><dt>言語</dt><dd>C、Haskell、Nix、TypeScript、Python、ShellScript</dd></div>
 <div><dt>案件で使用した技術</dt><dd>Flutter、Vue.js、Next.js、Firebase、Supabase、AWS、Vercel、Google Apps Script、Colmena、Sentry、Figma</dd></div>
 <div><dt>AI・データ活用</dt><dd>Google Gemini、Anthropic Claude、OpenAI GPT、TabFMを用いた機能開発・分析・予測処理</dd></div>
-</dl></div></section>
-<section class="section" id="work" aria-labelledby="work-title">
-<h2 id="work-title">主な仕事</h2>
-<div class="section-body projects">
-<article class="project">
-<p class="period">2026年8月〜現在 <span>2026年11月終了予定</span></p>
-<h3>中古家具販売事業者様の社内システム整備</h3>
-<p>一点ごとに異なる中古家具を管理する業務に合わせ、GoogleスプレッドシートとGoogle Apps Scriptで業務システムを設計・実装。営業・顧客対応からデータ整理、導入、フィードバックを受けた改善まで一貫して担当しています。</p>
-<p>貼り付けた情報から項目を自動入力し、データの矛盾を警告する機能を実装しました。Claude・GPTによる在庫回転の傾向分析や、TabFMによる販売価格・売上の予測処理も導入しています。</p>
-<p>入力ご担当者様から入力の負担が減ったとの評価を得ました。予測結果は仕入れご担当者様が最終確認する判断材料とし、実際の仕入れ判断での利用はこれからの段階です。</p>
-<p class="tech">Google Apps Script / Googleスプレッドシート / Claude / GPT / TabFM</p>
-</article>
-<article class="project">
-<p class="period">2025年9月〜2026年5月</p>
-<h3>AIを活用した合意形成システム</h3>
-<p>AIが生成するYes／No形式の質問を通じて、会議参加者の意見の相違や対立点、関心が向けられていない論点を抽出するシステムを3名で共同開発しました。チーム開発をリードし、仕様整理、コードレビュー、タスク分担、追加機能開発、リデザインを担当しました。</p>
-<p>CI/CD、ステージング環境、Sentryによる運用監視を導入。Nix・Colmenaによる環境構築・デプロイの整備や、自動テストと型安全性を用いた重要な処理の安定化にも取り組みました。</p>
-<p>1,000人以上が利用し、大企業様での導入1件、4自治体様での利用実績があります。</p>
-<p class="tech">Next.js / Supabase / Gemini / Vercel / Nix / Colmena / Sentry / Haskell</p>
-</article>
-<article class="project">
-<p class="period">2020年10月〜2024年7月</p>
-<h3>学習塾様向け学習支援アプリ</h3>
-<p>生徒自身が目標設定や学習計画づくりに参加できるアプリを開発。営業・企画、採用、顧客対応、技術選定、要件整理、画面設計、デザイン、導入を担当し、実装・テストは採用したエンジニアが担当しました。</p>
-<p>学習予定のカレンダーへの自動配分、実施記録、ゲーミフィケーション、学習時間のダッシュボードを設計。200名以上の生徒が利用しました。</p>
-<p class="tech">Flutter / Firebase / Figma</p>
-</article>
-<article class="project">
-<p class="period">2020年7月〜2020年11月</p>
-<h3>大手人材派遣会社様向け研修動画システム</h3>
-<p>研修動画を集約し、検索、視聴履歴、お気に入り、社員ごとの研修進捗の確認ができるシステムを開発。チームの採用、技術選定、要件整理、ワイヤフレーム設計、プロジェクト管理を担当しました。</p>
-<p>管理者・評価者・受講者の3種類の役割を設け、動画・機能ごとのアクセス制御の設計に携わりました。従業員約7万人の企業様向けに開発し、導入後に使いやすいとの評価を得ました。</p>
-<p class="tech">Vue.js / Firebase / AWS / Figma</p>
-</article>
-<article class="project">
-<p class="period">2020年6月〜2020年10月</p>
-<h3>整骨院様向け予実管理アプリ</h3>
-<p>店舗ごとに異なっていた数値の報告方法を整理し、売上・回数券販売・施術件数などのKPI達成状況を入力・確認できるアプリを開発。営業、採用、顧客対応、技術選定、要件整理、画面設計、現場への導入を担当しました。</p>
-<p>実装・テストは採用したエンジニア、画面のトーン＆マナーは採用したデザイナーが担当。10店舗以上を展開する事業者様に導入し、少なくとも30名が利用しました。</p>
-<p class="tech">Flutter / Firebase / Figma</p>
-</article>
+</dl></div></div>
+</section>
+<section class="lab-section" id="studies" aria-labelledby="studies-title">
+<div class="wrap"><div class="lab-heading"><div><h2 id="studies-title">技術の学習・制作</h2></div></div>
+<div class="lab-description"><h3>ネットワーク・システムソフトウェア</h3><div><p>42 Parisでは、Cでnmap、ping、tracerouteを再実装しました。nmapはチームで、pingとtracerouteは1人で開発。接続先や途中のネットワーク機器によって結果が変わるため、校舎や自宅で有線・Wi-Fiなどの条件を変えて検証しました。</p><p>Webサーバーの開発、メモリ管理機構の実装、C標準ライブラリの再実装、研究目的のランサムウェア制作にも取り組みました。</p></div></div>
+<div class="gallery-heading"><h3>フラクタルの描画</h3></div>
+<div class="gallery"><figure class="study">
+<div class="study-image"><img src="images/julia.webp" width="960" height="663" alt="ジュリア集合の描画" loading="lazy" decoding="async"></div>
+<figcaption><span>ジュリア集合</span><a class="study-play" href="julia.avif" data-preview="images/julia.webp" aria-label="ジュリア集合のアニメーションを見る"><span class="play-label" aria-live="polite">再生</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></figcaption></figure><figure class="study">
+<div class="study-image"><img src="images/mandelbrot.webp" width="960" height="663" alt="マンデルブロ集合の描画" loading="lazy" decoding="async"></div>
+<figcaption><span>マンデルブロ集合</span><a class="study-play" href="mandelbrot.avif" data-preview="images/mandelbrot.webp" aria-label="マンデルブロ集合のアニメーションを見る"><span class="play-label" aria-live="polite">再生</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></figcaption></figure><figure class="study">
+<div class="study-image"><img src="images/fern.webp" width="960" height="663" alt="Barnsley Fernの描画" loading="lazy" decoding="async"></div>
+<figcaption><span>Barnsley Fern</span><a class="study-play" href="fern.avif" data-preview="images/fern.webp" aria-label="Barnsley Fernのアニメーションを見る"><span class="play-label" aria-live="polite">再生</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></figcaption></figure></div>
 </div></section>
-<section class="section" aria-labelledby="systems-title">
-<h2 id="systems-title">技術の学習・制作</h2>
-<div class="section-body">
-<h3>ネットワーク・システムソフトウェア</h3>
-<p>42 Parisでは、Cでnmap、ping、tracerouteを再実装しました。nmapはチームで、pingとtracerouteは1人で開発。接続先や途中のネットワーク機器によって結果が変わるため、校舎や自宅で有線・Wi-Fiなどの条件を変えて検証しました。</p>
-<p>Webサーバーの開発、メモリ管理機構の実装、C標準ライブラリの再実装、研究目的のランサムウェア制作にも取り組みました。</p>
-<h3 class="subheading">フラクタルの描画</h3>
-<div class="gallery">
-<figure><img src="julia.avif" alt="ジュリア集合の描画" loading="lazy"><figcaption>ジュリア集合</figcaption></figure>
-<figure><img src="mandelbrot.avif" alt="マンデルブロ集合の描画" loading="lazy"><figcaption>マンデルブロ集合</figcaption></figure>
-<figure><img src="fern.avif" alt="Barnsley Fernの描画" loading="lazy"><figcaption>Barnsley Fern</figcaption></figure>
-</div></div></section>
-<section class="section" id="background" aria-labelledby="background-title">
-<h2 id="background-title">経歴</h2>
-<div class="section-body"><dl class="timeline">
+<div class="history-awards wrap">
+<section id="background" aria-labelledby="background-title"><div class="section-heading"><div><h2 id="background-title">経歴</h2></div></div><dl class="timeline">
 <div><dt>2026年4月</dt><dd>42 Tokyo 卒業</dd></div>
 <div><dt>2025年9月</dt><dd>42 Parisでの留学期間終了</dd></div>
 <div><dt>2025年3月</dt><dd>筑波大学 情報学群 情報メディア創成学類 中途退学</dd></div>
@@ -104,11 +77,8 @@
 <div><dt>2020年3月</dt><dd>N高等学校 卒業</dd></div>
 <div><dt>2019年1月</dt><dd>N高等学校 転入学（特待生）</dd></div>
 <div><dt>2017年4月</dt><dd>大阪府立茨木高等学校 入学</dd></div>
-</dl></div></section>
-<section class="section" aria-labelledby="awards-title">
-<h2 id="awards-title">個人開発・受賞</h2>
-<div class="section-body">
-<h3>Toubans!</h3>
+</dl></section>
+<section class="awards-section" aria-labelledby="awards-title"><div class="section-heading"><div><h2 id="awards-title">個人開発・受賞</h2></div></div><h3>Toubans!</h3>
 <p>高校時代に、当番の設定・通知をLINE上で行うサービスを開発しました。</p>
 <ul class="plain-list">
 <li>2018年度未踏ジュニア採択・スーパークリエータ認定</li>
@@ -117,17 +87,8 @@
 </ul>
 <h3 class="subheading">科学・写真・絵画</h3>
 <p>中学2年生の時、全国から理数系に関心のある40名を選抜する「創造性の育成塾」の第10期生に選ばれました。</p>
-<p>ニコンプラザ大阪 フォトスクエアでの写真展や、絵画と写真の個展を開催。MOA美術館全国児童作品展では2度入賞し、作品はMOA美術館に収蔵されています。</p>
-</div></section>
-<section class="section" id="contact" aria-labelledby="contact-title">
-<h2 id="contact-title">連絡先</h2>
-<div class="section-body"><ul class="contact-list">
-<li>Email: tremors_beau.9z [at] icloud.com</li>
-<li><a href="https://github.com/yuidvg">GitHub</a></li>
-<li><a href="https://scrapbox.io/yuidvg">Scrapbox</a></li>
-</ul></div></section>
-</main>
-<footer><p>&copy; 2026 西村 惟</p><p>2026年11月5日更新</p></footer>
+<p>ニコンプラザ大阪 フォトスクエアでの写真展や、絵画と写真の個展を開催。MOA美術館全国児童作品展では2度入賞し、作品はMOA美術館に収蔵されています。</p></section>
 </div>
-</body>
+<section class="contact-section wrap" id="contact" aria-labelledby="contact-title"><div class="section-heading"><h2 id="contact-title">連絡先</h2></div><div class="contact-panel"><div><p class="contact-label">Email</p><p class="email">tremors_beau.9z [at] icloud.com</p></div><div class="contact-links"><a class="text-link" href="https://github.com/yuidvg">GitHub <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a><a class="text-link" href="https://scrapbox.io/yuidvg">Scrapbox <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div></div></section></main>
+<footer class="site-footer"><div class="footer-inner"><p class="footer-name">Yui Nishimura</p><div class="footer-meta"><p>西村 惟 / ソフトウェアエンジニア</p><a href="#top">トップへ戻る <svg class="icon icon-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div><div class="footer-fine"><p>© 2026 西村 惟</p><p>2026年11月5日更新</p></div></div></footer></body>
 </html>

@@ -2,3 +2,5 @@ _site/
 .direnv/
 .jekyll-cache/
 *.mov
+.impeccable/review/
+.DS_Store
