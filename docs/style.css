@@ -78,12 +78,6 @@ a:hover { text-decoration: underline; text-underline-offset: .25em; }
 .portrait figcaption { margin-top: 10px; font: 12px/1.8 var(--latin); color: var(--muted); }
 
 .work-section, .about-section, .contact-section { padding-block: var(--space); }
-.recent-section { padding-block: 24px var(--space); }
-.recent-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; list-style: none; padding: 0; margin: 0; }
-.recent-list li { padding: clamp(24px, 3vw, 36px); background: var(--wash); border-radius: var(--radius-card); }
-.recent-label { color: var(--muted); font-size: 13px; }
-.recent-title { margin-top: 10px; font-size: 18px; font-weight: 500; }
-.recent-title a { text-decoration: underline; text-underline-offset: .25em; }
 .section-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; margin-bottom: 40px; }
 .section-caption { color: var(--muted); font-size: 14px; }
 .projects { display: grid; gap: 16px; }
@@ -173,7 +167,7 @@ details[open] .expand-icon { transform: rotate(45deg); }
   .portrait img { height: auto; max-height: 560px; aspect-ratio: 1 / 1; object-position: 50% 42%; }
   .section-heading { display: block; margin-bottom: 28px; }
   .section-caption { margin-top: 12px; font-size: 13px; }
-  .project, .about-grid, .lab-description, .history-awards, .recent-list { grid-template-columns: 1fr; }
+  .project, .about-grid, .lab-description, .history-awards { grid-template-columns: 1fr; }
   .project { gap: 24px; padding: 28px 24px; }
   .project h3 { max-width: 20em; margin-top: 12px; font-size: 22px; }
   .period span { display: inline; margin-left: .5em; }
@@ -210,8 +204,7 @@ details[open] .expand-icon { transform: rotate(45deg); }
   .portrait img { height: 180px; }
   h2 { font-size: 18pt; }
   h3, .project h3, .lab-description h3 { font-size: 13pt; }
-  .work-section, .about-section, .lab-section, .history-awards, .contact-section, .recent-section { padding-block: 20px; }
-  .recent-list li { padding: 12px 16px; }
+  .work-section, .about-section, .lab-section, .history-awards, .contact-section { padding-block: 20px; }
   .section-heading, .lab-heading { margin-bottom: 16px; }
   .project, .lab-description { display: block; padding: 16px; break-inside: avoid; }
   .project-content { margin-top: 12px; }

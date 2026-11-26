@@ -1,4 +1,4 @@
-import { readState, writeState, matches, compareEvents } from './experience-model.mjs';
+import { readState, writeState, matches, compareEvents, toggleKind, kinds } from './experience-model.mjs';
 
 const explorer = document.querySelector('#work');
 const source = document.querySelector('#experience-data');
@@ -6,14 +6,11 @@ if (explorer && source) {
   const data = JSON.parse(source.textContent);
   const articles = new Map(data.articles.map(a => [a.id, a]));
   const eventElements = new Map([...explorer.querySelectorAll('[data-event]')].map(el => [el.dataset.event, el]));
-  const projectElements = new Map([...explorer.querySelectorAll('[data-project]')].map(el => [el.dataset.project, el]));
   const yearGroups = [...explorer.querySelectorAll('.chronology-year')];
-  const projectView = explorer.querySelector('#project-view');
   const timelineView = explorer.querySelector('#timeline-view');
   const preview = explorer.querySelector('.reading-preview');
   const previewContent = explorer.querySelector('[data-preview-content]');
   const desktop = window.matchMedia('(min-width: 960px) and (hover: hover)');
-  const category = explorer.querySelector('#category-filter');
   const year = explorer.querySelector('#year-filter');
   const sort = explorer.querySelector('#sort-filter');
   const selectedTags = explorer.querySelector('[data-selected-tags]');
@@ -25,7 +22,7 @@ if (explorer && source) {
   let visibleEvents = [];
 
   function showPreview(id, eventId) {
-    if (!desktop.matches || state.view !== 'timeline') return;
+    if (!desktop.matches) return;
     if (id !== previewId) {
       const template = document.getElementById(`preview-${id}`);
       if (!template) return;
@@ -53,21 +50,9 @@ if (explorer && source) {
   }
   function render() {
     clearTimeout(timer);
-    const timeline = state.view === 'timeline';
-    projectView.hidden = timeline;
-    timelineView.hidden = !timeline;
-    explorer.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === state.view)));
-    explorer.querySelector('[data-category-control]').hidden = !timeline;
-    explorer.querySelector('[data-sort-control]').hidden = !timeline;
-    category.value = state.category;
+    explorer.querySelectorAll('[data-kind]').forEach(b => b.setAttribute('aria-pressed', String(state.kinds.includes(b.dataset.kind))));
     year.value = state.year;
     sort.value = state.sort;
-    let count = 0;
-    projectElements.forEach((el, id) => {
-      const a = articles.get(id);
-      el.hidden = !matches(a, state, a);
-      if (!timeline && !el.hidden) count++;
-    });
     visibleEvents = data.events.filter(event => matches(event, state, articles.get(event.article))).sort((a, b) => compareEvents(a, b, state.sort));
     const visibleIds = new Set(visibleEvents.map(v => v.id));
     eventElements.forEach((el, id) => { el.hidden = !visibleIds.has(id); });
@@ -79,10 +64,11 @@ if (explorer && source) {
       items.forEach(v => group.querySelector('ol').append(eventElements.get(v.id)));
       list.append(group);
     }
-    if (timeline) count = visibleEvents.length;
+    const count = visibleEvents.length;
     explorer.querySelector('[data-empty]').hidden = count > 0;
-    explorer.querySelector('#result-count').textContent = `${timeline ? '時系列' : '仕事一覧'} · ${count}件`;
-    const filtered = state.tags.length > 0 || state.year !== 'all' || (timeline && state.category !== 'all');
+    const label = state.kinds.map(k => explorer.querySelector(`[data-kind="${k}"]`).textContent).join('・');
+    explorer.querySelector('#result-count').textContent = `${label} · ${count}件`;
+    const filtered = state.tags.length > 0 || state.year !== 'all' || state.kinds.length < kinds.length;
     explorer.querySelector('.filter-feedback [data-reset]').hidden = !filtered;
     selectedTags.replaceChildren(...state.tags.map(tag => {
       const button = document.createElement('button');
@@ -97,8 +83,8 @@ if (explorer && source) {
       button.setAttribute('aria-pressed', String(state.tags.includes(button.dataset.tag)));
       if (button.tagName === 'A') button.setAttribute('role', 'button');
     });
-    if (!timeline || !visibleIds.has(activeEvent) || !desktop.matches) closePreview();
-    if (timeline && visibleEvents.length && preview.hidden && desktop.matches) {
+    if (!visibleIds.has(activeEvent) || !desktop.matches) closePreview();
+    if (visibleEvents.length && preview.hidden && desktop.matches) {
       showPreview(visibleEvents[0].article, visibleEvents[0].id);
     }
   }
@@ -108,7 +94,7 @@ if (explorer && source) {
     render();
   }
   explorer.addEventListener('click', event => {
-    const control = event.target.closest('[data-tag], [data-view], [data-reset], [data-preview-close]');
+    const control = event.target.closest('[data-tag], [data-kind], [data-reset], [data-preview-close]');
     if (!control || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     if (control.matches('[data-tag]')) {
       event.preventDefault();
@@ -116,10 +102,10 @@ if (explorer && source) {
       const wasSelected = control.closest('[data-selected-tags]');
       change({ tags: state.tags.includes(tag) ? state.tags.filter(t => t !== tag) : [...state.tags, tag] });
       if (wasSelected) explorer.querySelector('.tag-filter summary').focus({preventScroll:true});
-    } else if (control.matches('[data-view]')) {
-      change({ view: control.dataset.view });
+    } else if (control.matches('[data-kind]')) {
+      change({ kinds: toggleKind(state.kinds, control.dataset.kind) });
     } else if (control.matches('[data-reset]')) {
-      change({ tags: [], year: 'all', category: 'all' });
+      change({ tags: [], year: 'all', kinds: [...kinds] });
       explorer.querySelector('.tag-filter summary').focus({preventScroll:true});
     } else {
       const oldEvent = activeEvent;
@@ -144,7 +130,6 @@ if (explorer && source) {
       }
     }
   });
-  category.addEventListener('change', () => change({ category: category.value }));
   year.addEventListener('change', () => change({ year: year.value }));
   sort.addEventListener('change', () => change({ sort: sort.value }));
   eventElements.forEach((el, id) => {
